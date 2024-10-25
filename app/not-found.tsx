@@ -5,7 +5,7 @@ import { Metadata } from "next";
 const navigations = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
-  { name: "Introduce", href: "/introduce" },
+  { name: "Introduce", href: "/intro" },
 ]
 
 export const metadata:Metadata = {
