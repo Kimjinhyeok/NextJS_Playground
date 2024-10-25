@@ -1,9 +1,16 @@
 import Link from "next/link";
 import Particles from "../components/particle";
+import { Metadata } from "next";
 
+export const metadata:Metadata = {
+  title: 'KJH-Portfolio',
+  description: 'Portfolio site by Kimjinhyeok',
+  keywords: ['frontend', '프론트엔드', '웹개발자', '김진혁'],
+
+}
 const navigations = [
   { name: "Projects", href: "/projects" },
-  { name: "Introduce", href: "/introduce" },
+  { name: "Introduce", href: "/intro" },
 ]
 export default function PortfolioPage({}) {
 
