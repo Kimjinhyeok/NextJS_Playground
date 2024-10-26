@@ -93,7 +93,7 @@ export default function RainDropPage() {
       <div ref={ref} className="splat-toggle">
         { rains() }
         <div className="toggles">
-          <div onClick={toggleOptions('splat-toggle')} className="splat-toggle toggle">SPLAT</div>
+          <div onClick={toggleOptions('splat-toggle')} className="splat-toggle toggle active">SPLAT</div>
           <div onClick={toggleOptions('back-row-toggle')} className="back-row-toggle toggle">BACK<br/>ROW</div>
           <div onClick={toggleOptions('single-toggle')} className="single-toggle toggle">SINGLE</div>
         </div>
