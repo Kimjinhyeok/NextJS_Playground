@@ -7,11 +7,11 @@ export default function RainDropPage() {
   const ref = useRef<HTMLDivElement>(null)
   const makeStemSplat = (randoHundo:number, randoFiver:number) => (
     <>
-      <div className="stem" style={{
+      <div className="stem w-[1px] h-[60%] ml-[7px] bg-gradient-to-t from-[rgba(255,255,255,0)] to-[rgba(255,255,255,0.25)]" style={{
         animationDelay: `0.${randoHundo}s`,
         animationDuration: `0.5${randoHundo}s`,
         }}></div>
-      <div className="splat" style={{
+      <div className="splat w-[15px] h-[10px] border-t-[2px] border-dotted border-[rgba(255,255,255,0.25)] rounded-[50%] opacity-100 scale-0" style={{
         animationDelay: `0.${randoHundo}s`,
         animationDuration: `0.5${randoHundo}s`,
         }}></div>
@@ -90,7 +90,7 @@ export default function RainDropPage() {
   const rains = useMemo(() => makeItRain, [])
   return (
     <main className="relative bg-black">
-      <div ref={ref} className="">
+      <div ref={ref} className="splat-toggle">
         { rains() }
         <div className="toggles">
           <div onClick={toggleOptions('splat-toggle')} className="splat-toggle toggle">SPLAT</div>
