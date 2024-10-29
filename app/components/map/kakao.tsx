@@ -2,13 +2,22 @@
 
 import { useEffect, useRef } from "react";
 
+const CenterLatlng = {
+  lat : 37.596832367611604,
+  lng: 127.0592507392781,
+};
 export default function KakaoMap() {
 
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<any>(null);
+  const pritnRef = useRef<HTMLDivElement>(null);
+  const onClickEvent = (event:any) => {
+    console.log(event);
+    const latLng = event.latLng;
+    const div = document.createElement('div');
+    div.innerHTML = `lat: ${latLng.getLat()}, lng: ${latLng.getLng()}`;
 
-  const onClickEvent = (event:MouseEvent) => {
-    console.log('click: ', event);
+    pritnRef.current?.appendChild(div);
   }
   useEffect(() => {
     if(!container.current) return;
@@ -20,6 +29,7 @@ export default function KakaoMap() {
     document.head.appendChild(script);
 
     script.onload = () => {
+      if(mapRef.current) return;
       // windows를 any로 형변환하여 kakao에 대한 여부를 통과시키기
       const kakao = (window as any).kakao;
       if(!kakao) {
@@ -29,15 +39,18 @@ export default function KakaoMap() {
 
       kakao.maps.load(() => {
 
-        const center = new kakao.maps.LatLng(37.597283172613366, 127.0586311259329)
+        const center = new kakao.maps.LatLng(CenterLatlng.lat, CenterLatlng.lng)
         console.log('Center: ', center);
         const options = {
           center: center,
-          level: 2,
+          level: 3,
+          mapTypeId: kakao.maps.MapTypeId.HYBRID,
+          draggable: true,
         }
         const map = new kakao.maps.Map(container.current!, options);
 
         map.addListener('click', onClickEvent);
+        map.removeOverlayMapTypeId.OVERLAY
         mapRef.current = map;
       }); 
     }
@@ -45,9 +58,12 @@ export default function KakaoMap() {
       if(!mapRef.current) return;
       mapRef.current.removeListener('click', onClickEvent);
     };
-  }, [container]);
+  }, []);
 
   return (
-    <div className="w-full h-full" id="container" ref={container} />
+    <div className="w-full h-full flex flex-col">
+      <div className="flex-1 w-full h-full" id="container" ref={container}/>
+      <div ref={pritnRef} className="h-[20%] w-full overflow-auto bg-zinc-100 text-gray-900 px-2" />
+    </div>
   )
 }
