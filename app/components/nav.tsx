@@ -41,6 +41,7 @@ export const Navigation: React.FC = () => {
             {
               Links.map(item => (
                 <Link
+                  key={item.path}
                   href={item.href}
                   className={`duration-200 ${pathname == item.href ? 'font-bold' : ''} text-zinc-400 hover:text-zinc-100`}
                 >{item.path}</Link>
