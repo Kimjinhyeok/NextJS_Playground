@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from 'lucide-react';
+import { usePathname } from "next/navigation";
 
+const Links = [
+  {path : "Projects",  href: "/projects"},
+  {path : "Introduce",     href: "/intro"},
+  {path : "Contact", href: "/portfolio"},
+]
 export const Navigation: React.FC = () => {
   const [isIntersecting, setIsIntersecting] = useState(true);
 
@@ -21,6 +27,7 @@ export const Navigation: React.FC = () => {
     }
   }, [])
   
+  const pathname = usePathname();
 
   return (
     <header ref={ref}>
@@ -31,18 +38,14 @@ export const Navigation: React.FC = () => {
       }`}>
         <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
           <div className="flex justify-between gap-8">
-            <Link
-              href="/projects"
-              className="duration-200 text-zinc-400 hover:text-zinc-100"
-            >Projects</Link>
-            <Link
-              href="/intro"
-              className="duration-200 text-zinc-400 hover:text-zinc-100"
-            >Introduce</Link>
-            <Link
-              href="/projects"
-              className="duration-200 text-zinc-400 hover:text-zinc-100"
-            >Contact</Link>
+            {
+              Links.map(item => (
+                <Link
+                  href={item.href}
+                  className={`duration-200 ${pathname == item.href ? 'font-bold' : ''} text-zinc-400 hover:text-zinc-100`}
+                >{item.path}</Link>
+              ))
+            }
           </div>
           <Link
             href="/portfolio"
