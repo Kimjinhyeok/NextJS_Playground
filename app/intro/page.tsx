@@ -10,18 +10,16 @@ export const metadata:Metadata = {
 export default function Page({}) {
 
   return (
-    <div className="relative pb-16">
+    <main className="relative container mx-auto">
       <Navigation />
       <div className="px-6 pt-20 space-y-8 md:space-y-16 md:pt-24 lg:pt-32 animate-fade-in-fast">
         <div className={`${nanumGothic.className} relative w-full h-full flex space-x-2`}>
-          <div className="fixed left-0 h-full w-52 border-r border-zinc-800">in nav</div>
+          <div className="absolute left-0 h-full w-52 border-r border-zinc-800">in nav</div>
           <div className="pl-52 flex-1 h-full flex flex-col space-y-32">
             <div className="w-full flex-col space-y-4">
               <h2 className="text-4xl font-bold">Profile</h2>
               <hr className="border-zinc-800" />
               <ul className="grid gap-1">
-                <li>
-                </li>
                 <li className="text-xl">
                   <span className="font-semibold mr-2">Name.</span>
                   <span>김진혁(Kim jinhyeok)</span>
@@ -41,7 +39,7 @@ export default function Page({}) {
               <hr className="border-zinc-800" />
               <ul className="grid gap-3">
                 <li className="text-xl flex flex-col space-y-2">
-                  <div className="font-semibold mr-2">Key Skills</div>
+                  <div className="font-sals font-semibold mr-2">Key Skills</div>
                   <div className="flex justify-start space-x-2">
                     <Chip>React</Chip>
                     <Chip>TypeScript</Chip>
@@ -54,11 +52,12 @@ export default function Page({}) {
                   </div>
                 </li>
                 <li className="text-xl flex flex-col space-y-2">
-                  <div className="font-semibold mr-2">Additional Skiils</div>
+                  <div className="font-sals font-semibold mr-2">Additional Skiils</div>
                   <div className="flex justify-start space-x-2">
                     <Chip level="level2">Angular.js</Chip>
                     <Chip level="level2">NodeJS</Chip>
                     <Chip level="level2">oneM2M</Chip>
+                    <Chip level="level2">cesiumJS</Chip>
                     <Chip level="level3">D3</Chip>
                     <Chip level="level3">MongoDB</Chip>
                   </div>
@@ -69,8 +68,6 @@ export default function Page({}) {
               <h2 className="text-4xl font-bold">Career</h2>
               <hr className="border-zinc-800" />
               <ul className="grid gap-1">
-                <li>
-                </li>
                 <li className="text-xl">
                   <span className="font-semibold mr-2">Name.</span>
                   <span>김진혁(Kim jinhyeok)</span>
@@ -88,6 +85,6 @@ export default function Page({}) {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
