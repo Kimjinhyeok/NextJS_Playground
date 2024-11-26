@@ -8,20 +8,11 @@ const PATH = "/threejs/earth_globe_gltf/scene.gltf";
 export type EarthProps = {
   isRotating? : boolean,
 }
-const EarthModel = (props:EarthProps = { isRotating: true }) => {
-  
-  const modelRef = useRef<Object3D>(null);
-  useFrame(() => {
-    if(modelRef.current) {
-      // const obj = ref as unknown as Object3D; // Object3D로 캐스팅
-      if(props.isRotating) modelRef.current.rotation.y += 0.01;
-    }
-  });
-
-  
+const EarthModel = React.forwardRef<Object3D>((props:EarthProps = { isRotating: true }, ref) => {
+    
   return (
-    <Model ref={modelRef} path={PATH} scale={1} rotation={[90, 0, 0]}/>
+    <Model ref={ref} path={PATH} scale={1} rotation={[90, 0, 0]}/>
   )
-}
+})
 
 export default EarthModel;
