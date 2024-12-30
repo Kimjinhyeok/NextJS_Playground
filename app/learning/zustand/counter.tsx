@@ -1,7 +1,7 @@
 'use client';
 
 import { useCountStore } from "@/app/store/zustand";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CountController from "./controller";
 
 export interface CounterProps {
@@ -9,15 +9,17 @@ export interface CounterProps {
 }
 export default function Counter({initialCount}:CounterProps) {
 
-  const count = useCountStore(state => state.count);
+  const {hasInit, count} = useCountStore();
+  
   useEffect(() => {
-    useCountStore.setState(({ count: initialCount }));
+    useCountStore.setState(({hasInit: true, count: initialCount}))
   }, [])
   
   return (
     <>
       <div className="w-full flex justify-center">
-        <h1 className="text-5xl">{ count }</h1>
+        <h1 className="text-5xl">{ hasInit ? count : initialCount }</h1>
+        {/* <h1 className="text-5xl">{ count }</h1> */}
       </div>
       <CountController />
     </>
