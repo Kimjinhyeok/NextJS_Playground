@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "json-server db.json --port 3001",
-    "dev2": "next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,6 +14,7 @@
     "@react-three/drei": "^9.117.3",
     "@react-three/fiber": "^8.17.10",
     "@tanstack/react-query": "^5.62.11",
+    "axios": "^1.7.9",
     "lucide-react": "^0.453.0",
     "next": "14.2.15",
     "react": "^18",
